@@ -1,0 +1,12 @@
+<h2>Kurser</h2>
+@for (course of courses(); track course.code) {
+<table>
+    <tr>
+        <td>{{course.coursename}}</td>
+        <td>{{course.code}}</td>
+        <td>{{course.progression}}</td>
+        <td>{{course.syllabus}}</td>
+    </tr>
+</table>
+
+}
