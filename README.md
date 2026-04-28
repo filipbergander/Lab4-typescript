@@ -1,5 +1,44 @@
 # Laboration 4 - TypeScript
 
+Laborationens syfte är att hämta in och skriva ut kurser i Frontend genom ramverket Angular. Detta utifrån befintlig data från en webbtjänst för kurser. Möjlighet att filtrera och sortera bland kurserna ska finnas med..  
+Funktionaliteten och logiken ska finnas inom komponenter, services, och interface.
+
+## Hur valde jag att gå tillväga?
+
+Tre komponenter skapades, en för startsidan (home) där innehållet presenteras, en andra för själva tabellerna som sedan infogades inom home-komponenten, och en tredje som användes för en 404-sida (not-found). Startsidan och 404-sidan  användes inom routes (app.routes.ts) för navigering.
+
+### Interface
+Jag valde att skapa ett interface för hur datan som jag ville hämta skulle se ut:  
+**export interface Course** {   
+    **code:** string;   
+    **coursename:** string;   
+    **progression:** string;   
+    **syllabus:** string; }
+
+### Service
+
+En service, (services/get-course.ts), användes för att kunna hämta och anropa kurserna från webbtjänsten. Inom servicen användes Inject och HttpClient. En metod, fetchCourse, hämtade sedan in kurserna utifrån interfacet tillsammans med HttpClient. Startvärdet (initialValue) valdes till en tom array.   
+
+### Logik för kurserna
+Kursernas struktur och logik skapades sedan utifrån servicen och interfacet inom den egna course-komponenten. Inject användes för att kunna lagra de inhämtade kurserna i propertyn courses. Signals användes exempelvis för att filtrera och sortera bland kurserna.
+
+**filterCourses = signal("");**
+
+En switch-loop tillsammans med booleans, som blev initierade i en signal, gjorde det möjligt att sortera kursnamn, kurskod och progression i fallande och stigande ordning.
+
+**sortType = signal<"code" | "name" | "progression" | null>(null);**
+
+### Presentera kurserna
+I HTML-filen för den egna course-komponenten skapades layouten. Kurserna visades sedan i Frontend genom ett Table-element. Sökfält finns för att kunna filtrera och söka på kurser och placerades ovanför tabellen. En "For-loop" tillsammans med uppercase-pipe användes inom tabellen för att skriva ut kursernas data på ett snyggare vis. 
+
+ **@for (course of filteredResults(); track course.code)**
+
+ Jag valde i stället för att ha en lång URL-adress för kursplan, att använda mig av en ikon för respektive länk. 
+
+
+ ### Styling
+ All styling med regler gjordes inom SCSS-filer. Till exempel inom själva komponenterna och globalt.    
+
 
 ## Instruktioner från Angular:
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
