@@ -1,0 +1,143 @@
+div {
+    max-width: 1240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    box-shadow: 0 0 6px 1px rgb(153, 152, 152);
+    td {
+        border-bottom: 1px solid rgba(110, 109, 109, 0.479);
+        padding: 8px;
+    }
+    th {
+        border-bottom: 2px solid #676464;
+        padding: 12px;
+    }
+}
+
+.search-container {
+    width: 30%;
+    min-width: 250px;
+    max-width: 600px;
+    margin-bottom: 1.3em;
+    label {
+        font-weight: bold;
+        display: block;
+    }
+    input {
+        width: 100%;
+        padding: 0.5em;
+        border-radius: 8px;
+        border: 1px solid #676464;
+    }
+}
+
+.tr-head {
+    font-size: 1.1em;
+    th {
+        border: none;
+    }
+}
+
+.th-courseplan {
+    text-decoration: none;
+    cursor: default;
+}
+
+#th-name {
+    text-align: left;
+}
+
+.th-name {
+    text-decoration: underline;
+    &:hover {
+        color: #3a2002e3;
+        cursor: pointer;
+    }
+}
+
+.th-code {
+    @extend .th-name;
+    text-align: center;
+}
+
+.th-progression {
+    @extend .th-name;
+    text-align: center;
+}
+
+.td-name {
+    text-align: left;
+}
+
+.tr-course {
+    &:hover {
+        background-color: #ced1306c;
+    }
+}
+
+td {
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+@media screen and (max-width: 500px) {
+    .search-container {
+        width: 70%;
+        label {
+            font-size: 0.9em;
+        }
+    }
+    table {
+        width: 100%;
+        font-size: 12px;
+    }
+    svg {
+        width: 18px;
+        height: 18px;
+    }
+    .tr-head {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .search-container {
+        width: 80%;
+        min-width: 175px;
+    }
+    .tr-head {
+        text-align: left;
+        font-size: 0.95em;
+    }
+    .tr-course {
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .tr-head {
+        font-size: 0.9em;
+    }
+    .tr-course {
+        word-wrap: break-word;
+    }
+    .search-container {
+        min-width: 0;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .tr-head {
+        word-wrap: break-word;
+    }
+}

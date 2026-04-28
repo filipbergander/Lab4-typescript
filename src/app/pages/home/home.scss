@@ -1,3 +1,22 @@
 h1 {
     text-align: center;
 }
+
+section {
+    padding: 1em;
+}
+
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 1.5em;
+    }
+    section {
+        padding: 0.5em;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    section {
+        padding: 0em;
+    }
+}
