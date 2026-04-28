@@ -18,6 +18,9 @@ export class CourseComponent {
   // Sparar de inhämtade kurserna i courses för att kunna använda inom html 
   courses = this.courseService.fetchCourses();
 
+  // Om något går fel vid anropet mot webbtjänsten så ska det lagras i errors
+  error = signal<string | null>(null);
+
   // För att filtrera sökresultat, startvärde tomt
   filterCourses = signal("");
 
@@ -45,6 +48,18 @@ export class CourseComponent {
   sortByProgression(): void {
     this.sortType.set("progression") // När man klickar på progression (html) så används metoden
     this.sortProgression.set(!this.sortProgression()); // Switchar mellan true och false
+  }
+
+  // Constructor som initieras när data hämtas för att använda till eventuella felmeddelanden
+  constructor() {
+    effect(() => {
+      const data = this.courses(); // Data som hämtas in från webbtjänsten
+      if (data.length === 0) { // Om inget data hämtats så sätts ett felmeddelande
+        this.error.set("Ingen data för kurser kunde hämtas. Försök igen senare.");
+      } else {
+        this.error.set(null); // Annars återgår felmeddelandet till null, alltså tomt meddelande
+      }
+    });
   }
 
   filteredResults = computed(() => {
@@ -87,9 +102,9 @@ export class CourseComponent {
         results.sort((a, b) => this.sortProgression() ? a.progression.localeCompare(b.progression) : b.progression.localeCompare(a.progression));
         break;
 
-        // Om ingen sortering gjorts/klickats så används den vanliga ordningen för kurserna
-      default: case null: 
-      return results;
+      // Om ingen sortering gjorts/klickats så används den vanliga ordningen för kurserna
+      default: case null:
+        return results;
     }
     // Returnerar den slutliga listan av kurser som filtrerad/sorterad/osorterad
     return results;

@@ -3,6 +3,9 @@
         <label for="searchbar">Sök:</label>
         <input type="text" id="searchbar" placeholder="Sök efter kurskod eller namn" [value]="filterCourses()" (input)="filterCourses.set($any($event.target).value)">
     </div>
+    <div>
+        <p class="error-msg" *ngIf="error()">{{error()}}</p>
+    </div>
     <table>
         <tr class="tr-head">
             <th><span class="th-code" (click)="sortByCode()">Kurskod</span></th>
