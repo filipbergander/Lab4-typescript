@@ -1,7 +1,9 @@
 # Laboration 4 - TypeScript
 
-Laborationens syfte är att hämta in och skriva ut kurser i Frontend genom ramverket Angular. Detta utifrån befintlig data från en webbtjänst för kurser. Möjlighet att filtrera och sortera bland kurserna ska finnas med..  
-Funktionaliteten och logiken ska finnas inom komponenter, services, och interface.
+Laborationens syfte är att skapa en webbplats som hämtar in och skriver ut kurser i Frontend genom ramverket Angular. Detta utifrån befintlig data från en webbtjänst för kurser. Möjlighet att filtrera och sortera bland kurserna ska finnas med.   
+Funktionalitet och logik ska finnas inom komponenter, services, och interface.
+
+**Webbplats:** https://fb-lab4-typescript.netlify.app/
 
 ## Hur valde jag att gå tillväga?
 
@@ -20,7 +22,7 @@ Jag valde att skapa ett interface för hur datan som jag ville hämta skulle se 
 En service, (services/get-course.ts), användes för att kunna hämta och anropa kurserna från webbtjänsten. Inom servicen användes Inject och HttpClient. En metod, fetchCourse, hämtade sedan in kurserna utifrån interfacet tillsammans med HttpClient. Startvärdet (initialValue) valdes till en tom array.   
 
 ### Logik för kurserna
-Kursernas struktur och logik skapades sedan utifrån servicen och interfacet inom den egna course-komponenten. Inject användes för att kunna lagra de inhämtade kurserna i propertyn courses. Signals användes exempelvis för att filtrera och sortera bland kurserna.
+Kursernas struktur och logik skapades sedan utifrån servicen och interfacet inom den egna course-komponenten. Inject användes för att kunna lagra de inhämtade kurserna i propertyn Courses. Signals användes exempelvis för att filtrera och sortera bland kurserna.
 
 **filterCourses = signal("");**
 
